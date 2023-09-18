@@ -1,0 +1,13 @@
+{
+  "name": "nectar-sdk-examples",
+  "version": "0.1.0",
+  "description": "Nectar SDK examples",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc --build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@wasd3rplay/nectar-sdk": "file:wasd3rplay-nectar-sdk-0.1.0.tgz"
+  }
+}
