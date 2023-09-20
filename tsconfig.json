@@ -5,6 +5,7 @@
     "rootDirs": [
       "./src",
     ],
+    "outDir": "./dist",
     "resolveJsonModule": true,
     "declaration": true,
     "declarationMap": true,

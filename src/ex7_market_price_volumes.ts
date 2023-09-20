@@ -5,9 +5,9 @@ const nectar = new Nectar();
 const main = async (): Promise<void> => {
   const market = (await nectar.getExchangeInfo())[0];
 
-  const priceRemainVolumes = await nectar.getMarketPriceRemainVolumes(
-    market.symbol
-  );
+  const priceRemainVolumes = await nectar.getMarketPriceRemainVolumes({
+    symbol: market.symbol,
+  });
   console.debug("Market Volumes per Price: ", priceRemainVolumes);
   console.debug("Remain Bid (BUY) volume per Price", priceRemainVolumes.bids);
   console.debug("Remain Ask (SELL) volume per Price", priceRemainVolumes.asks);

@@ -8,7 +8,7 @@ const fetchAllOpenOrders = async (symbol: string): Promise<UserOrder[]> => {
 
   let page = 1;
   while (true) {
-    const resp = await nectar.getOpenOrders(page, symbol);
+    const resp = await nectar.getOpenOrders({ page, symbol });
     openOrders = openOrders.concat(resp.results);
 
     if (!resp.next) {
@@ -28,24 +28,24 @@ const main = async (): Promise<void> => {
 
   // BUY order
   const buyerWallet = Wallet.createRandom();
-  const buyOrderID = await nectar.createOrder(
-    marketSymbol,
-    OrderType.BUY,
-    "1000",
-    "0.1",
-    buyerWallet
-  );
+  const buyOrderID = await nectar.createLimitOrder({
+    symbol: marketSymbol,
+    orderType: OrderType.BUY,
+    price: "1000",
+    requestAmount: "0.1",
+    signer: buyerWallet,
+  });
   console.debug("BUY order: ", buyOrderID, " BY ", buyerWallet.address);
 
   // SELL order
   const sellerWallet = Wallet.createRandom();
-  const sellOrderID = await nectar.createOrder(
-    marketSymbol,
-    OrderType.SELL,
-    "1100",
-    "0.5",
-    sellerWallet
-  );
+  const sellOrderID = await nectar.createLimitOrder({
+    symbol: marketSymbol,
+    orderType: OrderType.SELL,
+    price: "1100",
+    requestAmount: "0.5",
+    signer: sellerWallet,
+  });
   console.debug("SELL order: ", sellOrderID, " BY ", sellerWallet.address);
 
   // All open orders
@@ -53,12 +53,12 @@ const main = async (): Promise<void> => {
   console.debug("Open orders: ", openOrders);
 
   // Cancel BUY order
-  await nectar.cancelOrder(buyOrderID);
+  await nectar.cancelOrder({ orderId: buyOrderID });
   openOrders = await fetchAllOpenOrders(marketSymbol);
   console.debug("Open orders: ", openOrders);
 
   // Cancel SELL order
-  await nectar.cancelOrder(sellOrderID);
+  await nectar.cancelOrder({ orderId: sellOrderID });
   openOrders = await fetchAllOpenOrders(marketSymbol);
   console.debug("Open orders: ", openOrders);
 };

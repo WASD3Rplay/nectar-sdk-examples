@@ -7,7 +7,7 @@ const fetchAllOrders = async (symbol: string): Promise<UserOrder[]> => {
 
   let page = 1;
   while (true) {
-    const resp = await nectar.getAllOrders(page, symbol);
+    const resp = await nectar.getAllOrders({ page, symbol });
     openOrders = openOrders.concat(resp.results);
 
     if (!resp.next) {

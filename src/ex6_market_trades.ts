@@ -7,7 +7,7 @@ const fetchAllTrades = async (symbol: string): Promise<MarketTrade[]> => {
 
   let page = 1;
   while (true) {
-    const resp = await nectar.getMarketTrades(symbol, page);
+    const resp = await nectar.getMarketTrades({ symbol, page });
     openOrders = openOrders.concat(resp.results);
 
     if (!resp.next) {
