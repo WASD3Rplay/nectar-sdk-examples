@@ -30,7 +30,7 @@ const main = async (): Promise<void> => {
   const buyerWallet = Wallet.createRandom();
   const buyOrderID = await nectar.createLimitOrder({
     symbol: marketSymbol,
-    orderType: OrderType.BUY,
+    orderType: OrderType.BUY_LIMIT,
     price: "1000",
     requestAmount: "0.1",
     signer: buyerWallet,
@@ -41,7 +41,7 @@ const main = async (): Promise<void> => {
   const sellerWallet = Wallet.createRandom();
   const sellOrderID = await nectar.createLimitOrder({
     symbol: marketSymbol,
-    orderType: OrderType.SELL,
+    orderType: OrderType.SELL_LIMIT,
     price: "1100",
     requestAmount: "0.5",
     signer: sellerWallet,
