@@ -1,6 +1,6 @@
 {
   "name": "nectar-sdk-examples",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "description": "Nectar SDK examples",
   "license": "Apache-2.0",
   "scripts": {
@@ -8,6 +8,6 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@wasd3rplay/nectar-sdk": "file:wasd3rplay-nectar-sdk-1.6.1.tgz"
+    "@wasd3rplay/nectar-sdk": "file:wasd3rplay-nectar-sdk-1.6.2.tgz"
   }
 }
